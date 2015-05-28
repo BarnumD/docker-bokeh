@@ -24,6 +24,8 @@ WORKDIR /opt/bokeh/bokeh
 RUN pip install -e .
 RUN python setup.py install
 
-# USER bokeh
-# ENV HOME /opt/bokeh
-# ENV USER bokeh
+USER bokeh
+ENV HOME /opt/bokeh
+ENV USER bokeh
+
+CMD [ "bokeh-server", "--port=5000" ]
