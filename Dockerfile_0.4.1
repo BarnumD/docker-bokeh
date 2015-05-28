@@ -15,8 +15,8 @@ RUN apt-get update && apt-get install --assume-yes \
     build-essential \
     python-dev
 
-ADD https://pypi.python.org/packages/source/b/bokeh/bokeh-0.9.0.tar.gz /tmp/bokeh-0.9.0.tar.gz
-RUN tar -xvf /tmp/bokeh-0.9.0.tar.gz && mv bokeh-0.9.0 /opt/bokeh/bokeh
+ADD https://pypi.python.org/packages/source/b/bokeh/bokeh-0.4.1.tar.gz /tmp/bokeh-0.4.1.tar.gz
+RUN tar -xvf /tmp/bokeh-0.4.1.tar.gz && mv bokeh-0.4.1 /opt/bokeh/bokeh
 
 WORKDIR /opt/bokeh/bokeh
 

@@ -2,19 +2,30 @@ FROM ubuntu:14.04
 
 RUN useradd --create-home --home-dir /opt/bokeh --shell /bin/bash bokeh
 
-RUN apt-get update && apt-get install --assume-yes python python-pip npm nodejs-legacy
+RUN apt-get update && apt-get install --assume-yes \
+    python \
+    python-pip \
+    npm \
+    nodejs-legacy \
+    gcc \
+    gfortran \
+    libblas-dev \
+    liblapack-dev \
+    cython \
+    build-essential \
+    python-dev
 
 ADD https://pypi.python.org/packages/source/b/bokeh/bokeh-0.8.2.tar.gz /tmp/bokeh-0.8.2.tar.gz
-RUN tar -xvf /tmp/bokeh-0.8.2.tar.gz && mv /tmp/bokeh-0.8.2 /opt/bokeh/bokeh
+RUN tar -xvf /tmp/bokeh-0.8.2.tar.gz && mv bokeh-0.8.2 /opt/bokeh/bokeh
 
 WORKDIR /opt/bokeh/bokeh
 
-RUN cd bokehjs && npm install && cd -
-RUN npm i -g gulp && npm i --save-dev gulp
-RUN cd bokehjs && gulp build && cd -
+RUN pip install -e .
+RUN python setup.py install
 
-RUN python setup.py install --install_js
+USER bokeh
+ENV HOME /opt/bokeh
+ENV USER bokeh
+EXPOSE 5000
 
-# USER bokeh
-# ENV HOME /opt/bokeh
-# ENV USER bokeh
+CMD [ "bokeh-server", "--port=5000" ]
