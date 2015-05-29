@@ -1,6 +1,6 @@
 Run
 ----
-docker run -p 5000:5000 -t jimho/bokeh:0.8.2
+docker run -p 5000:5000 -t jimho/bokeh:0.8.2  # -t isn't  that good, also it's not listening
 
 Build
 -----
@@ -8,7 +8,7 @@ docker build -t bokeh:0.8.2 -f Dockerfile_0.8.2 .
 
 Run your build
 --------------
-docker run -p 5000:5000 -t bokeh:0.8.2
+docker run -p 5000:5000 -t bokeh:0.8.2  # -t isn't that good, also it's not listening
 
 Debug your build
 ----------------
