@@ -28,4 +28,5 @@ ENV HOME /opt/bokeh
 ENV USER bokeh
 EXPOSE 5000
 
-CMD [ "bokeh-server", "--port=5000" ]
+ENTRYPOINT [ "bokeh-server" ]
+CMD [ "--ip=0.0.0.0", "--port=5000" ]

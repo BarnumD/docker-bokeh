@@ -40,7 +40,8 @@ def get_dockerfile(version):
         "ENV USER bokeh\n"
         "EXPOSE 5000\n"
         "\n"
-        "CMD [ \"bokeh-server\", \"--port=5000\" ]\n"
+        "ENTRYPOINT [ \"bokeh-server\" ]\n"
+        "CMD [ \"--ip=0.0.0.0\", \"--port=5000\" ]\n"
     ).format(version=version)
 
 
