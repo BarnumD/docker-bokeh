@@ -1,3 +1,3 @@
 Run
 ----
-docker run -d barnumd/bokeh
+docker run -d barnumd/docker-bokeh
